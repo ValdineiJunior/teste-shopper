@@ -1,0 +1,21 @@
+# dependencies
+/node_modules
+/.pnp
+.pnp.js
+
+# local env files
+.env*.local
+
+# logs
+*.log
+
+# build
+tsconfig.tsbuildinfo
+dist
+
+# editor
+.vscode
+
+# tests
+coverage
+
