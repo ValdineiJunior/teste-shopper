@@ -1,0 +1,18 @@
+services:
+  db:
+    image: mongo
+    volumes:
+      - mongodb-data:/data/db
+    container_name: shopperdb
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: ${MONGO_INITDB_ROOT_USERNAME}
+      MONGO_INITDB_ROOT_PASSWORD: ${MONGO_INITDB_ROOT_PASSWORD}
+    networks:
+      - shopper
+    ports:
+      - 27017:27017
+networks:
+  shopper:
+    driver: bridge
+volumes:
+  mongodb-data:
