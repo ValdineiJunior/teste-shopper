@@ -4,6 +4,7 @@ services:
     volumes:
       - mongodb-data:/data/db
     container_name: shopperdb
+    restart: on-failure
     environment:
       MONGO_INITDB_ROOT_USERNAME: ${MONGO_INITDB_ROOT_USERNAME}
       MONGO_INITDB_ROOT_PASSWORD: ${MONGO_INITDB_ROOT_PASSWORD}
@@ -11,6 +12,14 @@ services:
       - shopper
     ports:
       - 27017:27017
+  app:
+    build: .
+    container_name: shopperapp
+    restart: on-failure
+    ports:
+      - 3000:3000
+    depends_on:
+      - db
 networks:
   shopper:
     driver: bridge
